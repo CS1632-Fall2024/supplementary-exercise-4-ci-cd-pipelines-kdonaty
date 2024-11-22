@@ -1,0 +1,8 @@
+# Triggers manually or on push or pull request on the main branch
+# (in other words, on a code integration event.)
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
