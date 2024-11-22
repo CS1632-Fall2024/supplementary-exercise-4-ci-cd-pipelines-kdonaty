@@ -32,6 +32,10 @@ public class CatUnitTest {
 		// Passing InstanceType.MOCK as the first parameter will create a mock cat using Mockito.
 		// Which type is the correct choice for this unit test?  I'll leave it up to you.  The answer is in the Unit Testing Part 2 lecture. :)
 		// TODO: Fill in
+		c = Cat.createInstance(InstanceType.IMPL, 1, "Jennyanydots");
+		assertNotNull(c);
+		assertEquals(1, c.getId());
+		assertEquals("Jennyanydots", c.getName());
 	}
 
 	@After
@@ -53,6 +57,11 @@ public class CatUnitTest {
 	@Test
 	public void testGetId() {
 		// TODO: Fill in
+		// Execution Steps
+		int id = c.getId();
+
+		// Postconditions
+		assertEquals("Cat ID is not 1", 1, id);
 	}
 
 	/**
@@ -67,6 +76,11 @@ public class CatUnitTest {
 	@Test
 	public void testGetName() {
 		// TODO: Fill in
+		// Execution Steps
+		String name = c.getName();
+
+		// Postconditions
+		assertEquals("Jennyanydots", name);
 	}
 
 	/**
@@ -81,6 +95,11 @@ public class CatUnitTest {
 	@Test
 	public void testGetRented() {
 		// TODO: Fill in
+		// Execution Steps
+		boolean rented = c.getRented();
+
+		// Postconditions
+		assertFalse(rented);
 	}
 
 	/**
@@ -95,6 +114,11 @@ public class CatUnitTest {
 	@Test
 	public void testToString() {
 		// TODO: Fill in
+		// Execution Steps
+		String catString = c.toString();
+
+		// Postconditions
+		assertEquals("ID " + c.getId() + ". " + c.getName(), catString);
 	}
 
 	/**
@@ -110,6 +134,12 @@ public class CatUnitTest {
 	@Test
 	public void testRentCat() {
 		// TODO: Fill in
+		// Execution Steps
+		c.rentCat();
+		boolean rentCat = c.getRented();
+
+		// Postconditions
+		assertTrue(rentCat);
 	}
 
 	/**
@@ -126,6 +156,15 @@ public class CatUnitTest {
 	@Test
 	public void testReturnCat() {
 		// TODO: Fill in
+		// Preconditions
+		c.rentCat();
+
+		// Execution Steps
+		c.returnCat();
+		boolean rentCat = c.getRented();
+
+		// Postconditions
+		assertFalse(rentCat);
 	}
 
 	/**
@@ -141,6 +180,12 @@ public class CatUnitTest {
 	@Test
 	public void testRenameCat() {
 		// TODO: Fill in
+		// Execution Steps
+		c.renameCat("Garfield");
+
+		// Postconditions
+		assertEquals("Garfield", c.getName());
+		assertEquals("ID 1. Garfield", c.toString());
 	}
 
 }
